@@ -16,14 +16,14 @@ const AboutSection = () => {
           <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
             About Me
           </h2>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-300 text-lg font-sans font-medium">
             A Computer Science student specializing in Cloud Computing at
             Sheridan College. I'm passionate about building scalable, efficient
             systems and have hands-on experience with AWS, Docker, and
             real-world DevOps workflows through internships and startup
             projects.
           </p>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-300 text-lg font-sans font-medium">
             Outside of tech, I train in MMA and believe in pushing both mental
             and physical limits. I'm currently seeking opportunities to grow in
             cloud infrastructure, automation, and site reliability engineering,
@@ -33,17 +33,11 @@ const AboutSection = () => {
             <span className="px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full">
               Cloud Computing
             </span>
-            <span className="px-4 py-2 bg-pink-500/10 text-pink-400 rounded-full">
-              AWS
-            </span>
             <span className="px-4 py-2 bg-rose-500/10 text-rose-400 rounded-full">
               DevOps
             </span>
             <span className="px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full">
-              Docker
-            </span>
-            <span className="px-4 py-2 bg-pink-500/10 text-pink-400 rounded-full">
-              Site Reliability
+              Software Engineering
             </span>
           </div>
         </div>

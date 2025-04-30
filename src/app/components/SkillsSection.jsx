@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 
 const skillsData = {
   programming: {
-    title: "💻 Programming & Scripting",
+    title: "🚀 Programming & Scripting",
     items: [
       "Python",
       "JavaScript & TypeScript",
       "C & C++",
+      "Go",
       "Bash/Shell scripting",
       "SQL",
       "Postgres",
-      "HTML/CSS",
     ],
   },
   cloud: {
@@ -42,7 +42,7 @@ const skillsData = {
     ],
   },
   data: {
-    title: "📊 Data & Monitoring",
+    title: "🌳 Data & Monitoring",
     items: [
       "Elasticsearch",
       "SparkSQL",
@@ -51,24 +51,60 @@ const skillsData = {
     ],
   },
   certifications: {
-    title: "🎓 Certifications (in progress or planned)",
+    title: "🎓 Certifications",
     items: [
-      "AWS Certified Solutions Architect – Associate",
-      "AWS Certified Security – Specialty",
-      "Certified Kubernetes Administrator (CKA)",
-      "HashiCorp Certified: Terraform Associate",
+      {
+        name: "AWS Certified Solutions Architect – Associate",
+        status: "in-progress",
+      },
+      {
+        name: "HashiCorp Certified: Terraform Associate",
+        status: "in-progress",
+      },
+      {
+        name: "AWS Certified Security – Specialty",
+        status: "planned",
+      },
+      {
+        name: "Certified Kubernetes Administrator (CKA)",
+        status: "planned",
+      },
     ],
   },
+};
+
+const StatusBadge = ({ status }) => {
+  if (status === "in-progress") {
+    return (
+      <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+        In Progress
+      </span>
+    );
+  }
+  return (
+    <span className="px-2 py-1 text-xs rounded-full border border-purple-500 text-purple-400">
+      Planned
+    </span>
+  );
 };
 
 const SkillCard = ({ title, items, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      whileHover={{
+        scale: 1.02,
+        transition: { duration: 0.2 },
+      }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100,
+      }}
       viewport={{ once: true }}
-      className="relative bg-[#181818] p-6 rounded-lg shadow-lg"
+      className="relative bg-[#181818] p-6 rounded-lg shadow-sm hover:shadow-md hover:shadow-purple-500/10 transition-shadow duration-300"
     >
       <div className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
       <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
@@ -85,7 +121,14 @@ const SkillCard = ({ title, items, index }) => {
             className="flex items-start"
           >
             <span className="text-purple-400 mr-2">▹</span>
-            <span className="text-gray-300">{item}</span>
+            {typeof item === "string" ? (
+              <span className="text-gray-300">{item}</span>
+            ) : (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-300">{item.name}</span>
+                <StatusBadge status={item.status} />
+              </div>
+            )}
           </motion.li>
         ))}
       </ul>
