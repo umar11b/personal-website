@@ -18,16 +18,17 @@ const AboutSection = () => {
           </h2>
           <p className="text-gray-300 text-lg font-sans font-medium">
             A Computer Science student specializing in Cloud Computing at
-            Sheridan College. I'm passionate about building scalable, efficient
-            systems and have hands-on experience with AWS, Docker, and
+            Sheridan College. I&apos;m passionate about building scalable,
+            efficient systems and have hands-on experience with AWS, Docker, and
             real-world DevOps workflows through internships and startup
             projects.
           </p>
           <p className="text-gray-300 text-lg font-sans font-medium">
             Outside of tech, I train in MMA and believe in pushing both mental
-            and physical limits. I'm currently seeking opportunities to grow in
-            cloud infrastructure, automation, and site reliability engineering,
-            while contributing to innovative teams solving real-world problems.
+            and physical limits. I&apos;m currently seeking opportunities to
+            grow in cloud infrastructure, automation, and site reliability
+            engineering, while contributing to innovative teams solving
+            real-world problems.
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <span className="px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full">
