@@ -38,7 +38,7 @@ const HeroSection = () => {
           </div> */}
         </section>
       </div>
-      <div className="col-span-5 place-self-center mt-4 lg:mt-0">
+      <div className="col-span-5 place-self-center mt-4 lg:mt-0 hidden sm:block">
         <div className="flex items-center justify-center">
           <div className="p-[4px] rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500">
             <Image
@@ -63,14 +63,21 @@ const HeroSection = () => {
         rhoncus augue eu tortor iaculis consectetur.
       </p> */}
       <div className="col-span-7 place-self-center text-center sm:text-left">
-        <button className="w-full px-6 py-3 rounded-full mr-4 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 sm:w-fit hover:bg-slate-200 text-white">
+        <a
+          href="mailto:zamanu@sheridancollege.ca?subject=Hiring%20Inquiry%20from%20Portfolio"
+          className="w-full px-6 py-3 rounded-full mr-4 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 sm:w-fit hover:bg-slate-200 text-white inline-block text-center"
+        >
           Hire me
-        </button>
-        <button className="w-full px-1 py-1 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 sm:w-fit hover:bg-slate-800 text-white border border-white mt-3">
+        </a>
+        <a
+          href="/Umar_Zaman_Resume.pdf"
+          download
+          className="w-full px-1 py-1 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 sm:w-fit hover:bg-slate-800 text-white border border-white mt-3 inline-block text-center"
+        >
           <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 text-white">
             Download CV
           </span>
-        </button>
+        </a>
       </div>
     </div>
   );

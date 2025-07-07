@@ -4,28 +4,23 @@ import { motion } from "framer-motion";
 
 const skillsData = {
   programming: {
-    title: "🚀 Programming & Scripting",
-    items: [
-      "Python",
-      "JavaScript & TypeScript",
-      "C & C++",
-      "Go",
-      "Bash/Shell scripting",
-      "SQL",
-      "Postgres",
-    ],
+    title: "🧠 Programming & Scripting",
+    items: ["Python", "JavaScript & TypeScript", "Bash/Shell scripting", "SQL"],
   },
   cloud: {
     title: "☁️ Cloud & DevOps",
     items: [
-      "AWS (EC2, S3, Lambda, IAM, CloudWatch, CloudFormation, Dynamo)",
-      "GCP (Cloud Shell, Storage Systems)",
-      "Infrastructure as Code (IaC): Terraform",
+      "AWS (EC2, S3, IAM, Lambda, CloudWatch, CloudFormation)",
       "Docker (containerization)",
-      "GitHub Actions (CI/CD pipelines)",
-      "Basic Kubernetes knowledge",
-      "DevSecOps principles",
       "Linux server basics",
+      {
+        name: "GCP (Cloud Shell, Storage Systems)",
+        tag: "lab",
+      },
+      {
+        name: "Basic Kubernetes knowledge",
+        tag: "academic",
+      },
     ],
   },
   tools: {
@@ -34,25 +29,31 @@ const skillsData = {
       "React (frontend development)",
       "Next.js",
       "Tailwind CSS & Chakra UI",
-      "MongoDB (NoSQL)",
-      "Express.js (Node.js backend)",
-      "GraphQL & JSON-RPC APIs",
-      "Figma (UI prototyping/design)",
-      "Jira & Confluence (Agile project management)",
+      {
+        name: "MongoDB",
+        tag: "project",
+      },
+      {
+        name: "Figma",
+        tag: "design",
+      },
+      {
+        name: "Jira & Confluence",
+        tag: "agile",
+      },
     ],
   },
   data: {
-    title: "🌳 Data & Monitoring",
-    items: [
-      "Elasticsearch",
-      "SparkSQL",
-      "Real-time metrics & analytics dashboards",
-      "Experience with log filtering and observability practices",
-    ],
+    title: "📊 Data & Monitoring",
+    items: ["AWS CloudWatch (log filtering, alarms, EC2 monitoring)"],
   },
   certifications: {
     title: "🎓 Certifications",
     items: [
+      {
+        name: "AWS Cloud Solutions Architect Foundational",
+        status: "completed",
+      },
       {
         name: "AWS Certified Solutions Architect – Associate",
         status: "in-progress",
@@ -62,7 +63,11 @@ const skillsData = {
         status: "in-progress",
       },
       {
-        name: "AWS Certified Security – Specialty",
+        name: "AWS Certified Developer – Associate",
+        status: "planned",
+      },
+      {
+        name: "AWS Certified SysOps Administrator – Associate",
         status: "planned",
       },
       {
@@ -74,6 +79,13 @@ const skillsData = {
 };
 
 const StatusBadge = ({ status }) => {
+  if (status === "completed") {
+    return (
+      <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow shadow-amber-400/20 border border-amber-300">
+        Completed
+      </span>
+    );
+  }
   if (status === "in-progress") {
     return (
       <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">
@@ -84,6 +96,18 @@ const StatusBadge = ({ status }) => {
   return (
     <span className="px-2 py-1 text-xs rounded-full border border-purple-500 text-purple-400">
       Planned
+    </span>
+  );
+};
+
+const ExperienceTag = ({ type }) => {
+  return (
+    <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+      {type === "lab" && "Lab Experience"}
+      {type === "academic" && "Academic"}
+      {type === "project" && "Project"}
+      {type === "design" && "Design"}
+      {type === "agile" && "Agile Project Management"}
     </span>
   );
 };
@@ -123,10 +147,15 @@ const SkillCard = ({ title, items, index }) => {
             <span className="text-purple-400 mr-2">▹</span>
             {typeof item === "string" ? (
               <span className="text-gray-300">{item}</span>
-            ) : (
+            ) : item.status ? (
               <div className="flex items-center gap-2">
                 <span className="text-gray-300">{item.name}</span>
                 <StatusBadge status={item.status} />
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-300">{item.name}</span>
+                <ExperienceTag type={item.tag} />
               </div>
             )}
           </motion.li>
