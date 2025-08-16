@@ -10,6 +10,9 @@
       "Condition": {
         "StringLike": {
           "token.actions.githubusercontent.com:sub": "repo:umar11b/personal-website:*"
+        },
+        "StringEquals": {
+          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
         }
       }
     }
