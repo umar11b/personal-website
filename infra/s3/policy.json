@@ -3,18 +3,14 @@
   "Statement": [
     {
       "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::931633655568:oidc-provider/token.actions.githubusercontent.com"
-      },
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringLike": {
-          "token.actions.githubusercontent.com:sub": "repo:umar11b/personal-website:*"
-        },
-        "StringEquals": {
-          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-        }
-      }
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:GetObject",
+        "s3:DeleteObject",
+        "s3:ListBucket"
+      ],
+      "Resource": ["arn:aws:s3:::umarzaman.ca", "arn:aws:s3:::umarzaman.ca/*"]
     }
   ]
 }
