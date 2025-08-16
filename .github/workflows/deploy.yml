@@ -1,40 +1,49 @@
-name: 🚀 Deploy Portfolio to S3
+name: Deploy Next.js to S3
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
-      - name: 🧾 Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: "18"
+          cache: "npm"
 
-      - name: 📦 Install dependencies
-        working-directory: frontend
+      - name: Install dependencies
         run: npm ci
 
-      - name: 🛠️ Build app
-        working-directory: frontend
+      - name: Build Next.js app
         run: npm run build
 
-      - name: ☁️ Configure AWS credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::931633655568:role/GitHubDeployRole
-          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::931633655568:role/GitHubPortfolioDeploy
+          aws-region: us-east-1 # Replace with your bucket's region
+          role-session-name: GitHubActions
 
-      - name: 🚀 Sync to S3
-        run: aws s3 sync frontend/out/ s3://umarzaman.ca --delete
+      - name: Deploy to S3
+        run: |
+          aws s3 sync frontend/out/ s3://umarzaman.ca --delete --cache-control max-age=31536000,public
+
+      - name: Invalidate CloudFront (if using)
+        run: |
+          aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
+        # Remove this step if you're not using CloudFront
