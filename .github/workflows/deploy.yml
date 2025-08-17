@@ -46,7 +46,6 @@ jobs:
         run: |
           aws s3 sync frontend/out/ s3://umarzaman.ca --delete --cache-control max-age=31536000,public
 
-      - name: Invalidate CloudFront (if using)
+      - name: Invalidate CloudFront
         run: |
-          aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
-        # Remove this step if you're not using CloudFront
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
