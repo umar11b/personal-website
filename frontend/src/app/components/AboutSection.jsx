@@ -17,18 +17,16 @@ const AboutSection = () => {
             About Me
           </h2>
           <p className="text-gray-300 text-lg font-sans font-medium">
-            A Computer Science student specializing in Cloud Computing at
-            Sheridan College. I&apos;m passionate about building scalable,
-            efficient systems and have hands-on experience with AWS, Docker, and
-            real-world DevOps workflows through internships and startup
-            projects.
+            I&apos;m a Computer Science student specializing in Cloud Computing
+            at Sheridan College. I focus on building secure, scalable,
+            cost-effectiveand efficient cloud systems. I have hands-on
+            experience with AWS, Docker/Kubernetes, and real-world DevOps
+            workflows through internships with startups and personal projects.
           </p>
           <p className="text-gray-300 text-lg font-sans font-medium">
-            Outside of tech, I train in MMA and believe in pushing both mental
-            and physical limits. I&apos;m currently seeking opportunities to
-            grow in cloud infrastructure, automation, and site reliability
-            engineering, while contributing to innovative teams solving
-            real-world problems.
+            Currently, I&apos;m expanding my expertise in
+            infrastructure-as-code, CI/CD automation, and Kubernetes to prepare
+            for roles in Cloud Engineering and Site Reliability.
           </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <span className="px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full">
@@ -38,7 +36,7 @@ const AboutSection = () => {
               DevOps
             </span>
             <span className="px-4 py-2 bg-purple-500/10 text-purple-400 rounded-full">
-              Software Engineering
+              Infrastructure-as-Code
             </span>
           </div>
         </div>
