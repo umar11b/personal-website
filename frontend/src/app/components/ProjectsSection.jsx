@@ -34,8 +34,8 @@ const projectsData = [
   {
     title: "Pi Homelab",
     description:
-      "Raspberry Pi 5 Kubernetes homelab with Docker, K3s, ingress, and monitoring. Learning infrastructure automation and container orchestration in a home environment.",
-    tech: ["Kubernetes", "Docker", "K3s", "Raspberry Pi", "Monitoring"],
+      "Designed and deployed a multi-tenant Kubernetes homelab on Raspberry Pi 5 with Docker, K3s, and ingress. Configured workload isolation, pod sharing, and role-based access controls to ensure secure multi-user environments. Added Prometheus + Grafana monitoring to track performance and optimize resource utilization.",
+    tech: ["Kubernetes", "Docker", "K3s", "Ingress", "Grafana", "Prometheus"],
     deployment: "Local Network",
     github: null,
     live: null,
@@ -46,14 +46,21 @@ const projectsData = [
 const StatusBadge = ({ status }) => {
   if (status === "completed") {
     return (
-      <span className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium">
+      <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow shadow-amber-400/20 border border-amber-300">
         Completed
       </span>
     );
   }
+  if (status === "in-progress") {
+    return (
+      <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+        In Progress
+      </span>
+    );
+  }
   return (
-    <span className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium">
-      In Progress
+    <span className="px-2 py-1 text-xs rounded-full border border-purple-500 text-purple-400">
+      Planned
     </span>
   );
 };
