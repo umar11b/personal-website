@@ -11,7 +11,7 @@ const endorsementsData = [
   {
     name: "Anas Khan",
     title: "Software Engineer",
-    date: "May 9, 2025",
+    date: "2025",
     feedback:
       "Umar is a passionate aspiring Cloud Engineer, who wants to learn and apply his skills. He was great to have on the team and was very curious about different technologies. He took initiative to set up logging for our applications, which helped us gain important insights on how our services were running.",
     tags: [
@@ -24,15 +24,13 @@ const endorsementsData = [
       "Python (programming language)",
       "JavaScript (programming language)",
     ],
-    project: "AI-Powered Browser Extension (Learning Mode AI)",
-    organization: "Riipen Level UP",
-    mentor: true,
-    cohort: "Level UP: March 2025",
+    project: "AI-Powered Browser Extension",
+    organization: "Learning Mode AI",
   },
   {
     name: "Ralph Maamari",
     title: "Chief Executive Officer",
-    date: "March 16, 2024",
+    date: "2024",
     feedback:
       "Great professional experience working with Umar and Emad who were very professional throughout the entire process!",
     tags: [
@@ -53,7 +51,7 @@ const endorsementsData = [
   {
     name: "Imran Nathani",
     title: "Operations Manager",
-    date: "March 28, 2024",
+    date: "2024",
     feedback:
       "Your strong teamwork and communication skills have contributed greatly to the overall success of our projects. Well done!",
     tags: [
@@ -66,13 +64,14 @@ const endorsementsData = [
       "Mailchimp",
       "Workflow management",
     ],
-    project: "Integration of Ticketspice, I Challenge Mailchimp...",
-    organization: "Diabetes",
+    project:
+      "Integration of Ticketspice, Mailchimp, Slack, and Google Sheets for I Challenge Diabetes",
+    organization: "I Challenge Diabetes",
   },
   {
     name: "James Rhule",
     title: "Managing Partner",
-    date: "March 27, 2024",
+    date: "2024",
     feedback: "Good work, thanks for the help!",
     tags: [
       "Notification systems",
@@ -80,13 +79,13 @@ const endorsementsData = [
       "User profile",
       "Management",
     ],
-    project: "User Management Service",
-    organization: "Pathways to Environmental Careers",
+    project: "Backend Systems Lead",
+    organization: "Project: Human City",
   },
   {
     name: "Kurtis Cicalo",
     title: "CEO",
-    date: "April 15, 2024",
+    date: "2024",
     feedback: "Great to work with.",
     tags: [
       "Regression testing",
@@ -99,28 +98,12 @@ const endorsementsData = [
     organization: "Voiceflip Technologies Inc",
   },
   {
-    name: "James Rhule",
-    title: "Managing Partner",
-    date: "April 18, 2024",
-    feedback:
-      "Great work Umar worked with us and was an exemplary intern with us. From the outset, Umar demonstrated a deep commitment to learning and a remarkable ability to complete tasks independently and efficiently. His talent is undeniable, and he consistently performs beyond expectations with minimal supervision. Umar's proactive approach and dedication to improving his skills make him a standout candidate for any future endeavors. He is a self-starter and a quick learner whose future in this field is undoubtedly bright. I wholeheartedly recommend Umar and am confident he will continue to excel and bring value wherever he goes.",
-    tags: [
-      "Notification systems",
-      "Algorithms",
-      "User profile",
-      "Application programming interface (API)",
-      "Security systems",
-    ],
-    project: "Backend Systems Lead",
-    organization: "Human City",
-  },
-  {
-    name: "Prabbis",
+    name: "Abi",
     title: "Consulting Founder",
-    date: "April 23, 2024",
+    date: "2024",
     feedback:
       "Umar has been an outstanding intern from the start, demonstrating a strong willingness to learn and an impressive ability to execute tasks independently. His talent and dedication are evident in every project he undertakes. Umar consistently exceeds expectations with minimal guidance, showcasing his considerable skills and potential. We are incredibly pleased with his performance and encourage him to continue developing his talents.",
-    tags: ["Laravel"],
+    tags: ["Frontend", "Tailwind CSS", "Figma", "React"],
     project: "Laravel Web Application Development",
     organization: "Prabbis Consulting",
   },
@@ -138,22 +121,13 @@ const EndorsementCard = ({ endorsement, isActive }) => {
       transition={{ duration: 0.5, type: "spring" }}
       className={`relative bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] p-8 rounded-xl shadow-lg border border-gray-800/50 overflow-hidden min-h-[400px] flex flex-col ${
         isActive ? "shadow-purple-500/20" : "shadow-gray-500/10"
-      } ${endorsement.mentor ? "border-purple-500/30" : ""}`}
+      }`}
     >
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
 
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500"></div>
-
-      {/* Mentor badge */}
-      {endorsement.mentor && (
-        <div className="absolute top-4 right-4">
-          <span className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium">
-            🧑‍🏫 Mentor
-          </span>
-        </div>
-      )}
 
       <div className="relative flex-1">
         {/* Header */}
@@ -187,7 +161,7 @@ const EndorsementCard = ({ endorsement, isActive }) => {
               {endorsement.project}
             </p>
           </div>
-          <div className="mb-3">
+          <div>
             <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
               Organization
             </p>
@@ -195,16 +169,6 @@ const EndorsementCard = ({ endorsement, isActive }) => {
               {endorsement.organization}
             </p>
           </div>
-          {endorsement.cohort && (
-            <div>
-              <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
-                Cohort
-              </p>
-              <p className="text-cyan-300 text-sm font-medium">
-                {endorsement.cohort}
-              </p>
-            </div>
-          )}
         </div>
 
         {/* Feedback */}
