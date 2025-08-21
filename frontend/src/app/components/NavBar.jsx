@@ -14,12 +14,12 @@ const navLinks = [
     href: "#skills",
   },
   {
-    title: "Endorsements",
-    href: "#endorsements",
-  },
-  {
     title: "Projects",
     href: "#projects",
+  },
+  {
+    title: "Endorsements",
+    href: "#endorsements",
   },
   {
     title: "Contact",
