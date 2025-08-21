@@ -240,20 +240,28 @@ const EndorsementsSection = () => {
         </h2>
 
         <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-400 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            <ChevronLeftIcon className="w-6 h-6" />
-          </button>
+          {/* Navigation Buttons - Outside Carousel */}
+          <div className="flex justify-between items-center mb-6">
+            <button
+              onClick={prevSlide}
+              className="p-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-400 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <ChevronLeftIcon className="w-5 h-5" />
+            </button>
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-400 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            <ChevronRightIcon className="w-6 h-6" />
-          </button>
+            <div className="text-center">
+              <p className="text-sm text-gray-400">
+                Swipe or use arrows to navigate
+              </p>
+            </div>
+
+            <button
+              onClick={nextSlide}
+              className="p-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-400 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <ChevronRightIcon className="w-5 h-5" />
+            </button>
+          </div>
 
           {/* Carousel */}
           <div className="relative overflow-hidden rounded-xl">
