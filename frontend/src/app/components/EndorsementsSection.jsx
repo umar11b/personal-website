@@ -1,90 +1,330 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  StarIcon,
+} from "@heroicons/react/24/solid";
 
-// Add your endorsement images to public/endorsements/
-const endorsements = [
+const endorsementsData = [
   {
-    src: "/images/endorsements/endorsement1.png",
-    alt: "Endorsement 1",
+    name: "Anas Khan",
+    title: "Software Engineer",
+    date: "May 9, 2025",
+    feedback:
+      "Umar is a passionate aspiring Cloud Engineer, who wants to learn and apply his skills. He was great to have on the team and was very curious about different technologies. He took initiative to set up logging for our applications, which helped us gain important insights on how our services were running.",
+    tags: [
+      "Escalation procedures",
+      "Self-service technologies",
+      "Timelines",
+      "Innovation",
+      "Automation",
+      "Artificial Intelligence",
+      "Python (programming language)",
+      "JavaScript (programming language)",
+    ],
+    project: "AI-Powered Browser Extension (Learning Mode AI)",
+    organization: "Riipen Level UP",
+    mentor: true,
+    cohort: "Level UP: March 2025",
   },
   {
-    src: "/images/endorsements/endorsement2.png",
-    alt: "Endorsement 2",
+    name: "Ralph Maamari",
+    title: "Chief Executive Officer",
+    date: "March 16, 2024",
+    feedback:
+      "Great professional experience working with Umar and Emad who were very professional throughout the entire process!",
+    tags: [
+      "Planning",
+      "Finance",
+      "Continuous integration",
+      "Personal finance",
+      "Continuous deployment",
+      "CI/CD",
+      "DevOps",
+      "Scalability",
+      "Software as a Service (SaaS)",
+      "Automation",
+    ],
+    project: "Infrastructure Systems DevOps CI/CD Role",
+    organization: "Savi Finance",
   },
   {
-    src: "/images/endorsements/endorsement3.png",
-    alt: "Endorsement 3",
+    name: "Imran Nathani",
+    title: "Operations Manager",
+    date: "March 28, 2024",
+    feedback:
+      "Your strong teamwork and communication skills have contributed greatly to the overall success of our projects. Well done!",
+    tags: [
+      "Diabetes mellitus",
+      "Slack (software)",
+      "Google Sheets",
+      "Communication",
+      "Automatic updates",
+      "Data sharing",
+      "Mailchimp",
+      "Workflow management",
+    ],
+    project: "Integration of Ticketspice, I Challenge Mailchimp...",
+    organization: "Diabetes",
   },
   {
-    src: "/images/endorsements/endorsement4.png",
-    alt: "Endorsement 4",
+    name: "James Rhule",
+    title: "Managing Partner",
+    date: "March 27, 2024",
+    feedback: "Good work, thanks for the help!",
+    tags: [
+      "Notification systems",
+      "Service development",
+      "User profile",
+      "Management",
+    ],
+    project: "User Management Service",
+    organization: "Pathways to Environmental Careers",
   },
   {
-    src: "/images/endorsements/endorsement5.png",
-    alt: "Endorsement 5",
+    name: "Kurtis Cicalo",
+    title: "CEO",
+    date: "April 15, 2024",
+    feedback: "Great to work with.",
+    tags: [
+      "Regression testing",
+      "Scenario testing",
+      "Language model",
+      "Integrity testing",
+      "Vulnerability",
+    ],
+    project: "LLM Integration Security and Content Integrity Testing",
+    organization: "Voiceflip Technologies Inc",
   },
   {
-    src: "/images/endorsements/endorsement6.png",
-    alt: "Endorsement 6",
+    name: "James Rhule",
+    title: "Managing Partner",
+    date: "April 18, 2024",
+    feedback:
+      "Great work Umar worked with us and was an exemplary intern with us. From the outset, Umar demonstrated a deep commitment to learning and a remarkable ability to complete tasks independently and efficiently. His talent is undeniable, and he consistently performs beyond expectations with minimal supervision. Umar's proactive approach and dedication to improving his skills make him a standout candidate for any future endeavors. He is a self-starter and a quick learner whose future in this field is undoubtedly bright. I wholeheartedly recommend Umar and am confident he will continue to excel and bring value wherever he goes.",
+    tags: [
+      "Notification systems",
+      "Algorithms",
+      "User profile",
+      "Application programming interface (API)",
+      "Security systems",
+    ],
+    project: "Backend Systems Lead",
+    organization: "Human City",
   },
-  // Add more as needed
+  {
+    name: "Prabbis",
+    title: "Consulting Founder",
+    date: "April 23, 2024",
+    feedback:
+      "Umar has been an outstanding intern from the start, demonstrating a strong willingness to learn and an impressive ability to execute tasks independently. His talent and dedication are evident in every project he undertakes. Umar consistently exceeds expectations with minimal guidance, showcasing his considerable skills and potential. We are incredibly pleased with his performance and encourage him to continue developing his talents.",
+    tags: ["Laravel"],
+    project: "Laravel Web Application Development",
+    organization: "Prabbis Consulting",
+  },
 ];
 
+const EndorsementCard = ({ endorsement, isActive }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95, y: 30 }}
+      animate={{
+        opacity: isActive ? 1 : 0.7,
+        scale: isActive ? 1 : 0.95,
+        y: isActive ? 0 : 10,
+      }}
+      transition={{ duration: 0.5, type: "spring" }}
+      className={`relative bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] p-8 rounded-xl shadow-lg border border-gray-800/50 overflow-hidden min-h-[400px] flex flex-col ${
+        isActive ? "shadow-purple-500/20" : "shadow-gray-500/10"
+      } ${endorsement.mentor ? "border-purple-500/30" : ""}`}
+    >
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500"></div>
+
+      {/* Mentor badge */}
+      {endorsement.mentor && (
+        <div className="absolute top-4 right-4">
+          <span className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium">
+            🧑‍🏫 Mentor
+          </span>
+        </div>
+      )}
+
+      <div className="relative flex-1">
+        {/* Header */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-1">
+                {endorsement.name}
+              </h3>
+              <p className="text-purple-400 text-sm font-medium">
+                {endorsement.title}
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-gray-400 text-sm">{endorsement.date}</p>
+              <div className="flex items-center gap-1 mt-1">
+                {[...Array(5)].map((_, i) => (
+                  <StarIcon
+                    key={i}
+                    className="w-4 h-4 text-yellow-400 fill-current"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mb-3">
+            <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
+              Project
+            </p>
+            <p className="text-purple-300 text-sm font-medium">
+              {endorsement.project}
+            </p>
+          </div>
+          <div className="mb-3">
+            <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
+              Organization
+            </p>
+            <p className="text-pink-300 text-sm font-medium">
+              {endorsement.organization}
+            </p>
+          </div>
+          {endorsement.cohort && (
+            <div>
+              <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
+                Cohort
+              </p>
+              <p className="text-cyan-300 text-sm font-medium">
+                {endorsement.cohort}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Feedback */}
+        <div className="mb-6 flex-1">
+          <p className="text-gray-300 text-sm leading-relaxed italic">
+            "{endorsement.feedback}"
+          </p>
+        </div>
+
+        {/* Tags */}
+        <div>
+          <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-3">
+            Skills Demonstrated
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {endorsement.tags.slice(0, 6).map((tag, index) => (
+              <span
+                key={index}
+                className="px-2 py-1 text-xs rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
+              >
+                {tag}
+              </span>
+            ))}
+            {endorsement.tags.length > 6 && (
+              <span className="px-2 py-1 text-xs rounded-full bg-gray-500/10 text-gray-400 border border-gray-500/20">
+                +{endorsement.tags.length - 6} more
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const EndorsementsSection = () => {
-  const [current, setCurrent] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef(null);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % endorsementsData.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? endorsementsData.length - 1 : prevIndex - 1
+    );
+  };
 
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % endorsements.length);
+      nextSlide();
     }, 5000);
+
     return () => clearTimeout(timeoutRef.current);
-  }, [current]);
+  }, [currentIndex]);
 
   return (
     <section id="endorsements" className="py-16">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
           Endorsements
         </h2>
-        <div className="relative flex items-center justify-center min-h-[500px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, scale: 0.95, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -30 }}
-              transition={{ duration: 0.5, type: "spring" }}
-              className="mx-auto w-full max-w-6xl p-3 bg-[#181818] rounded-3xl"
-            >
-              <Image
-                src={endorsements[current].src}
-                alt={endorsements[current].alt}
-                width={1000}
-                height={750}
-                className="rounded-2xl object-contain mx-auto bg-[#232323]"
-                priority
+
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-400 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <ChevronLeftIcon className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-400 hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            <ChevronRightIcon className="w-6 h-6" />
+          </button>
+
+          {/* Carousel */}
+          <div className="relative overflow-hidden rounded-xl">
+            <div className="flex transition-transform duration-500 ease-in-out">
+              {endorsementsData.map((endorsement, index) => (
+                <div
+                  key={index}
+                  className="w-full flex-shrink-0 px-4"
+                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                  <EndorsementCard
+                    endorsement={endorsement}
+                    isActive={index === currentIndex}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-3 mt-8">
+            {endorsementsData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg"
+                    : "bg-gray-600 hover:bg-gray-500"
+                }`}
               />
-            </motion.div>
-          </AnimatePresence>
+            ))}
+          </div>
         </div>
-        <div className="flex justify-center gap-3 mt-2">
-          {endorsements.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrent(idx)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 border-2 shadow-md focus:outline-none focus:ring-2 focus:ring-pink-500/50 ${
-                idx === current
-                  ? "bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 border-transparent shadow-lg"
-                  : "bg-[#232323] border-[#444]"
-              }`}
-              aria-label={`Go to endorsement ${idx + 1}`}
-            />
-          ))}
-        </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
