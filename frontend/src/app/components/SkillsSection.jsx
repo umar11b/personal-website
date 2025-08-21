@@ -84,24 +84,16 @@ const skillsData = {
     title: "🎓 Certifications",
     items: [
       {
-        name: "AWS Cloud Solutions Architect Foundational",
+        name: "AWS Cloud Practitioner",
         status: "completed",
       },
       {
-        name: "AWS Certified Solutions Architect – Associate",
+        name: "AWS Solutions Architect – Associate",
         status: "in-progress",
       },
       {
-        name: "HashiCorp Certified: Terraform Associate",
+        name: "HashiCorp Terraform Associate",
         status: "in-progress",
-      },
-      {
-        name: "AWS Certified Developer – Associate",
-        status: "planned",
-      },
-      {
-        name: "AWS Certified SysOps Administrator – Associate",
-        status: "planned",
       },
       {
         name: "Certified Kubernetes Administrator (CKA)",
