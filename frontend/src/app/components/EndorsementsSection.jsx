@@ -6,6 +6,7 @@ import {
   ChevronRightIcon,
   StarIcon,
 } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 const endorsementsData = [
   {
@@ -26,6 +27,8 @@ const endorsementsData = [
     ],
     project: "AI-Powered Browser Extension",
     organization: "Learning Mode AI",
+    image:
+      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/30487/avatar/large-2f3f74be7597e48e342ba2ed40b95454.jpeg",
   },
   {
     name: "Ralph Maamari",
@@ -47,6 +50,8 @@ const endorsementsData = [
     ],
     project: "Infrastructure Systems DevOps CI/CD Role",
     organization: "Savi Finance",
+    image:
+      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/5174/avatar/large-a1dd068adde9b2b334b9b2caa499d241.png",
   },
   {
     name: "Imran Nathani",
@@ -67,6 +72,8 @@ const endorsementsData = [
     project:
       "Integration of Ticketspice, Mailchimp, Slack, and Google Sheets for I Challenge Diabetes",
     organization: "I Challenge Diabetes",
+    image:
+      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/19045/avatar/large-75ab9a5c-b059-4e39-9d72-3fd7ebadd5b8.jpeg",
   },
   {
     name: "James Rhule",
@@ -81,6 +88,8 @@ const endorsementsData = [
     ],
     project: "Backend Systems Lead",
     organization: "Project: Human City",
+    image:
+      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/18949/avatar/large-4a5d8d90-fc94-4dd4-9ac3-7e932daf4eb9.png",
   },
   {
     name: "Kurtis Cicalo",
@@ -96,6 +105,8 @@ const endorsementsData = [
     ],
     project: "LLM Integration Security and Content Integrity Testing",
     organization: "Voiceflip Technologies Inc",
+    image:
+      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/17710/avatar/large-48c8695a-c051-49d0-aa85-f836b09cc497.jpeg",
   },
   {
     name: "Abi",
@@ -106,6 +117,8 @@ const endorsementsData = [
     tags: ["Frontend", "Tailwind CSS", "Figma", "React"],
     project: "Laravel Web Application Development",
     organization: "Prabbis Consulting",
+    image:
+      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/26018/avatar/large-9fd6fab0d22ad0c1aa43a842c994a884.webp",
   },
 ];
 
@@ -133,13 +146,25 @@ const EndorsementCard = ({ endorsement, isActive }) => {
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-1">
-                {endorsement.name}
-              </h3>
-              <p className="text-purple-400 text-sm font-medium">
-                {endorsement.title}
-              </p>
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <Image
+                  src={endorsement.image}
+                  alt={`${endorsement.name} profile`}
+                  width={60}
+                  height={60}
+                  className="rounded-full object-cover border-2 border-purple-500/30"
+                />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-2 border-[#1a1a1a]"></div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">
+                  {endorsement.name}
+                </h3>
+                <p className="text-purple-400 text-sm font-medium">
+                  {endorsement.title}
+                </p>
+              </div>
             </div>
             <div className="text-right">
               <p className="text-gray-400 text-sm">{endorsement.date}</p>
