@@ -3,49 +3,82 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const skillsData = {
-  programming: {
-    title: "🧠 Programming & Scripting",
-    items: ["Python", "JavaScript & TypeScript", "Bash/Shell scripting", "SQL"],
-  },
-  cloud: {
-    title: "☁️ Cloud & DevOps",
+  cloudPlatforms: {
+    title: "☁️ Cloud Platforms",
     items: [
-      "AWS (EC2, S3, IAM, Lambda, CloudWatch, CloudFormation)",
-      "Docker (containerization)",
-      "Linux server basics",
       {
-        name: "GCP (Cloud Shell, Storage Systems)",
-        tag: "lab",
+        name: "AWS (EC2, S3, IAM, Lambda, CloudWatch, CloudFormation)",
+        tag: "project",
       },
       {
-        name: "Basic Kubernetes knowledge",
+        name: "GCP (Cloud Shell, Cloud Storage)",
         tag: "academic",
       },
     ],
   },
-  tools: {
-    title: "🛠️ Tools & Frameworks",
+  devopsInfrastructure: {
+    title: "⚙️ DevOps & Infrastructure",
     items: [
-      "React (frontend development)",
-      "Next.js",
-      "Tailwind CSS & Chakra UI",
       {
-        name: "MongoDB",
+        name: "Docker (containerization)",
         tag: "project",
       },
       {
-        name: "Figma",
-        tag: "design",
+        name: "Kubernetes",
+        tag: "home-lab",
       },
       {
-        name: "Jira & Confluence",
-        tag: "agile",
+        name: "Terraform (IaC)",
+        status: "planned",
+      },
+      {
+        name: "Linux server administration (Debian, Ubuntu)",
+        tag: "home-lab",
       },
     ],
   },
-  data: {
-    title: "📊 Data & Monitoring",
-    items: ["AWS CloudWatch (log filtering, alarms, EC2 monitoring)"],
+  programmingAutomation: {
+    title: "🔧 Programming & Automation",
+    items: [
+      {
+        name: "Python",
+        tag: "academic",
+      },
+      {
+        name: "Bash/Shell scripting",
+        tag: "academic",
+      },
+      {
+        name: "JavaScript/TypeScript (IaC/CDK)",
+        tag: "project",
+      },
+      {
+        name: "SQL",
+        tag: "academic",
+      },
+    ],
+  },
+  monitoringReliability: {
+    title: "🔍 Monitoring & Reliability",
+    items: [
+      {
+        name: "AWS CloudWatch (logs, alarms, EC2 monitoring)",
+        tag: "project",
+      },
+    ],
+  },
+  toolsFrameworks: {
+    title: "🛠️ Tools & Frameworks",
+    items: [
+      {
+        name: "GitHub Actions (CI/CD)",
+        tag: "project",
+      },
+      {
+        name: "Jira & Confluence",
+        tag: "academic",
+      },
+    ],
   },
   certifications: {
     title: "🎓 Certifications",
@@ -103,10 +136,11 @@ const StatusBadge = ({ status }) => {
 const ExperienceTag = ({ type }) => {
   return (
     <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">
-      {type === "lab" && "Lab Experience"}
       {type === "academic" && "Academic"}
+      {type === "in-progress" && "In Progress"}
+      {type === "planned" && "Planned"}
       {type === "project" && "Project"}
-      {type === "design" && "Design"}
+      {type === "home-lab" && "Home Lab"}
       {type === "agile" && "Agile Project Management"}
     </span>
   );
