@@ -195,9 +195,11 @@ const SkillCard = ({ title, items, index }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: i * 0.05 }}
             viewport={{ once: true }}
-            className="flex items-start"
+            className="flex items-start group/item"
           >
-            <span className="text-purple-400 mr-2">▹</span>
+            <span className="text-purple-400 mr-2 group-hover/item:scale-110 transition-transform duration-200">
+              ▹
+            </span>
             {typeof item === "string" ? (
               <span className="text-gray-300">{item}</span>
             ) : item.status ? (
