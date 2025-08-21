@@ -119,8 +119,9 @@ const ContactSection = () => {
 
         <div className="text-center mb-8">
           <p className="text-gray-300 text-lg mb-4">
-            I'm always open to discussing new opportunities, collaborations, or
-            just having a chat about cloud infrastructure and DevOps.
+            I&apos;m always open to discussing new opportunities,
+            collaborations, or just having a chat about cloud infrastructure and
+            DevOps.
           </p>
           <p className="text-gray-400 text-sm">
             Feel free to reach out through any of the channels below.
@@ -140,7 +141,7 @@ const ContactSection = () => {
 
         <div className="text-center mt-12">
           <p className="text-gray-400 text-sm">
-            Looking for a Cloud & DevOps Engineer? Let's connect! 🚀
+            Looking for a Cloud & DevOps Engineer? Let&apos;s connect! 🚀
           </p>
         </div>
       </motion.div>

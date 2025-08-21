@@ -199,7 +199,7 @@ const EndorsementCard = ({ endorsement, isActive }) => {
         {/* Feedback */}
         <div className="mb-6 flex-1">
           <p className="text-gray-300 text-sm leading-relaxed italic">
-            "{endorsement.feedback}"
+            &ldquo;{endorsement.feedback}&rdquo;
           </p>
         </div>
 
