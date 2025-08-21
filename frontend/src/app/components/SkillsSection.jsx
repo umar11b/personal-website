@@ -3,72 +3,105 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const skillsData = {
-  programming: {
-    title: "🧠 Programming & Scripting",
-    items: ["Python", "JavaScript & TypeScript", "Bash/Shell scripting", "SQL"],
-  },
-  cloud: {
-    title: "☁️ Cloud & DevOps",
+  cloudPlatforms: {
+    title: "☁️ Cloud Platforms",
     items: [
-      "AWS (EC2, S3, IAM, Lambda, CloudWatch, CloudFormation)",
-      "Docker (containerization)",
-      "Linux server basics",
       {
-        name: "GCP (Cloud Shell, Storage Systems)",
-        tag: "lab",
+        name: "AWS (EC2, S3, IAM, Lambda, CloudWatch, CloudFormation)",
+        tag: "project",
       },
       {
-        name: "Basic Kubernetes knowledge",
+        name: "GCP (Cloud Shell, Cloud Storage)",
         tag: "academic",
       },
     ],
   },
-  tools: {
-    title: "🛠️ Tools & Frameworks",
+  devopsInfrastructure: {
+    title: "⚙️ DevOps & Infrastructure",
     items: [
-      "React (frontend development)",
-      "Next.js",
-      "Tailwind CSS & Chakra UI",
       {
-        name: "MongoDB",
+        name: "Docker (containerization)",
         tag: "project",
       },
       {
-        name: "Figma",
-        tag: "design",
+        name: "Kubernetes",
+        tag: "home-lab",
       },
       {
-        name: "Jira & Confluence",
-        tag: "agile",
+        name: "Terraform (IaC)",
+        status: "planned",
+      },
+      {
+        name: "Linux server administration (Debian, Ubuntu)",
+        tag: "home-lab",
       },
     ],
   },
-  data: {
-    title: "📊 Data & Monitoring",
-    items: ["AWS CloudWatch (log filtering, alarms, EC2 monitoring)"],
+  programmingAutomation: {
+    title: "🔧 Programming & Automation",
+    items: [
+      {
+        name: "Python",
+        tag: "academic",
+      },
+      {
+        name: "Bash/Shell scripting",
+        tag: "academic",
+      },
+      {
+        name: "JavaScript/TypeScript (IaC/CDK)",
+        tag: "project",
+      },
+      {
+        name: "SQL",
+        tag: "academic",
+      },
+    ],
+  },
+  monitoringReliability: {
+    title: "🔍 Monitoring & Reliability",
+    items: [
+      {
+        name: "AWS CloudWatch (logs, alarms, EC2 monitoring)",
+        tag: "project",
+      },
+      {
+        name: "Prometheus",
+        tag: "home-lab",
+      },
+      {
+        name: "Grafana",
+        tag: "home-lab",
+      },
+    ],
+  },
+  toolsFrameworks: {
+    title: "🛠️ Tools & Frameworks",
+    items: [
+      {
+        name: "GitHub Actions (CI/CD)",
+        tag: "project",
+      },
+      {
+        name: "Jira & Confluence",
+        tag: "academic",
+      },
+    ],
   },
   certifications: {
     title: "🎓 Certifications",
     items: [
       {
-        name: "AWS Cloud Solutions Architect Foundational",
+        name: "AWS Cloud Practitioner",
         status: "completed",
       },
       {
-        name: "AWS Certified Solutions Architect – Associate",
+        name: "AWS Solutions Architect – Associate",
         status: "in-progress",
       },
       {
-        name: "HashiCorp Certified: Terraform Associate",
+        name: "HashiCorp Terraform Associate",
         status: "in-progress",
-      },
-      {
-        name: "AWS Certified Developer – Associate",
-        status: "planned",
-      },
-      {
-        name: "AWS Certified SysOps Administrator – Associate",
-        status: "planned",
       },
       {
         name: "Certified Kubernetes Administrator (CKA)",
@@ -101,12 +134,32 @@ const StatusBadge = ({ status }) => {
 };
 
 const ExperienceTag = ({ type }) => {
+  const getTagStyle = (type) => {
+    switch (type) {
+      case "academic":
+        return "bg-gradient-to-r from-purple-400 to-blue-400 text-white";
+      case "project":
+        return "bg-gradient-to-r from-pink-500 to-rose-500 text-white";
+      case "home-lab":
+        return "bg-gradient-to-r from-cyan-400 to-blue-600 text-white";
+      case "in-progress":
+        return "bg-gradient-to-r from-purple-500 to-pink-500 text-white";
+      case "planned":
+        return "bg-gradient-to-r from-slate-500 to-gray-500 text-white";
+      case "agile":
+        return "bg-gradient-to-r from-rose-400 to-pink-400 text-white";
+      default:
+        return "bg-gradient-to-r from-purple-500 to-pink-500 text-white";
+    }
+  };
+
   return (
-    <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">
-      {type === "lab" && "Lab Experience"}
+    <span className={`px-2 py-1 text-xs rounded-full ${getTagStyle(type)}`}>
       {type === "academic" && "Academic"}
+      {type === "in-progress" && "In Progress"}
+      {type === "planned" && "Planned"}
       {type === "project" && "Project"}
-      {type === "design" && "Design"}
+      {type === "home-lab" && "Home Lab"}
       {type === "agile" && "Agile Project Management"}
     </span>
   );
@@ -142,19 +195,21 @@ const SkillCard = ({ title, items, index }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: i * 0.05 }}
             viewport={{ once: true }}
-            className="flex items-start"
+            className="flex items-start group/item"
           >
-            <span className="text-purple-400 mr-2">▹</span>
+            <span className="text-purple-400 mr-2 group-hover/item:scale-110 transition-transform duration-200">
+              ▹
+            </span>
             {typeof item === "string" ? (
               <span className="text-gray-300">{item}</span>
             ) : item.status ? (
-              <div className="flex items-center gap-2">
-                <span className="text-gray-300">{item.name}</span>
+              <div className="flex items-start gap-2">
+                <span className="text-gray-300 flex-1">{item.name}</span>
                 <StatusBadge status={item.status} />
               </div>
             ) : (
-              <div className="flex items-center gap-2">
-                <span className="text-gray-300">{item.name}</span>
+              <div className="flex items-start gap-2">
+                <span className="text-gray-300 flex-1">{item.name}</span>
                 <ExperienceTag type={item.tag} />
               </div>
             )}
