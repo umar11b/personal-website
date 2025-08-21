@@ -65,6 +65,14 @@ const skillsData = {
         name: "AWS CloudWatch (logs, alarms, EC2 monitoring)",
         tag: "project",
       },
+      {
+        name: "Prometheus",
+        tag: "home-lab",
+      },
+      {
+        name: "Grafana",
+        tag: "home-lab",
+      },
     ],
   },
   toolsFrameworks: {
