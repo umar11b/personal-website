@@ -134,8 +134,27 @@ const StatusBadge = ({ status }) => {
 };
 
 const ExperienceTag = ({ type }) => {
+  const getTagStyle = (type) => {
+    switch (type) {
+      case "academic":
+        return "bg-gradient-to-r from-purple-400 to-blue-400 text-white";
+      case "project":
+        return "bg-gradient-to-r from-pink-500 to-rose-500 text-white";
+      case "home-lab":
+        return "bg-gradient-to-r from-cyan-400 to-blue-600 text-white";
+      case "in-progress":
+        return "bg-gradient-to-r from-purple-500 to-pink-500 text-white";
+      case "planned":
+        return "bg-gradient-to-r from-slate-500 to-gray-500 text-white";
+      case "agile":
+        return "bg-gradient-to-r from-rose-400 to-pink-400 text-white";
+      default:
+        return "bg-gradient-to-r from-purple-500 to-pink-500 text-white";
+    }
+  };
+
   return (
-    <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+    <span className={`px-2 py-1 text-xs rounded-full ${getTagStyle(type)}`}>
       {type === "academic" && "Academic"}
       {type === "in-progress" && "In Progress"}
       {type === "planned" && "Planned"}
@@ -182,13 +201,13 @@ const SkillCard = ({ title, items, index }) => {
             {typeof item === "string" ? (
               <span className="text-gray-300">{item}</span>
             ) : item.status ? (
-              <div className="flex items-center gap-2">
-                <span className="text-gray-300">{item.name}</span>
+              <div className="flex items-start gap-2">
+                <span className="text-gray-300 flex-1">{item.name}</span>
                 <StatusBadge status={item.status} />
               </div>
             ) : (
-              <div className="flex items-center gap-2">
-                <span className="text-gray-300">{item.name}</span>
+              <div className="flex items-start gap-2">
+                <span className="text-gray-300 flex-1">{item.name}</span>
                 <ExperienceTag type={item.tag} />
               </div>
             )}
