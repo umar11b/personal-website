@@ -4,9 +4,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Umar Zaman | Cloud Security Engineer & Developer",
+  title: "Umar Zaman | DevOps & Cloud Engineer",
   description:
-    "Personal portfolio website showcasing my work in cloud security and software development",
+    "Personal portfolio website showcasing my work in DevOps, cloud infrastructure, and site reliability engineering",
 };
 
 export default function RootLayout({ children }) {
