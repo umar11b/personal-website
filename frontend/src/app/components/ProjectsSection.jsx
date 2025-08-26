@@ -5,14 +5,33 @@ import { ExternalLinkIcon, GithubIcon } from "lucide-react";
 
 const projectsData = [
   {
-    title: "Portfolio Website",
+    title: "BlockchainCore",
     description:
-      "Personal portfolio website showcasing cloud and DevOps expertise. Features modern React frontend with TypeAnimation, responsive design, and professional styling. Deployed with S3, CloudFront, Route 53, GitHub Actions CI/CD.",
-    tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-    deployment: "umarzaman.ca",
-    github: "https://github.com/umar11b/personal-website",
-    live: "https://umarzaman.ca",
-    status: "completed",
+      "Real-time cryptocurrency data processing platform with live trade data ingestion from Binance WebSocket API. Features AWS SQS + Lambda for cost-effective message processing, S3 + DynamoDB for data storage, automated anomaly detection for price movements and volume spikes, and comprehensive monitoring with CloudWatch + SNS alerts. Infrastructure managed with Terraform and CI/CD via GitHub Actions.",
+    tech: [
+      "Python",
+      "AWS SQS",
+      "AWS Lambda",
+      "DynamoDB",
+      "S3",
+      "Terraform",
+      "GitHub Actions",
+      "WebSocket API",
+    ],
+    deployment: "AWS Cloud",
+    github: "https://github.com/umar11b/BlockchainCore",
+    live: null,
+    status: "in-progress",
+  },
+  {
+    title: "Pi Homelab",
+    description:
+      "Designed and deployed a multi-tenant Kubernetes homelab on Raspberry Pi 5 with Docker, K3s, and ingress. Configured workload isolation, pod sharing, and role-based access controls to ensure secure multi-user environments. Added Prometheus + Grafana monitoring to track performance and optimize resource utilization.",
+    tech: ["Kubernetes", "Docker", "K3s", "Ingress", "Grafana", "Prometheus"],
+    deployment: "Local Network",
+    github: null,
+    live: null,
+    status: "in-progress",
   },
   {
     title: "Greenalytics",
@@ -32,14 +51,14 @@ const projectsData = [
     status: "in-progress",
   },
   {
-    title: "Pi Homelab",
+    title: "Portfolio Website",
     description:
-      "Designed and deployed a multi-tenant Kubernetes homelab on Raspberry Pi 5 with Docker, K3s, and ingress. Configured workload isolation, pod sharing, and role-based access controls to ensure secure multi-user environments. Added Prometheus + Grafana monitoring to track performance and optimize resource utilization.",
-    tech: ["Kubernetes", "Docker", "K3s", "Ingress", "Grafana", "Prometheus"],
-    deployment: "Local Network",
-    github: null,
-    live: null,
-    status: "in-progress",
+      "Personal portfolio website showcasing cloud and DevOps expertise. Features modern React frontend with TypeAnimation, responsive design, and professional styling. Deployed with S3, CloudFront, Route 53, GitHub Actions CI/CD.",
+    tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+    deployment: "umarzaman.ca",
+    github: "https://github.com/umar11b/personal-website",
+    live: "https://umarzaman.ca",
+    status: "completed",
   },
 ];
 
