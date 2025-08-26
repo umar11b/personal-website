@@ -82,12 +82,11 @@ const HeroSection = () => {
         </a>
         <a
           href="/Umar_Zaman_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+          download="Umar_Zaman_Resume.pdf"
           className="w-full px-1 py-1 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 sm:w-fit hover:bg-slate-800 text-white border border-white mt-3 inline-block text-center"
         >
           <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 text-white">
-            View Resume
+            Download Resume
           </span>
         </a>
       </div>
