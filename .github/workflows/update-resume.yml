@@ -1,0 +1,40 @@
+name: Update Resume
+
+on:
+  push:
+    paths:
+      - "resume/Umar_Zaman_Resume.pdf"
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  update-resume:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::931633655568:role/GitHubPortfolioDeploy
+          aws-region: us-east-1
+          role-session-name: GitHubActions
+
+      - name: Upload resume to S3
+        run: |
+          aws s3 cp resume/Umar_Zaman_Resume.pdf s3://umarzaman.ca/Umar_Zaman_Resume.pdf --cache-control max-age=3600
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id E18H3I0OQ0DRO8 --paths "/Umar_Zaman_Resume.pdf"
+
+      - name: Notify success
+        run: |
+          echo "✅ Resume updated successfully!"
+          echo "📄 New resume available at: https://umarzaman.ca/Umar_Zaman_Resume.pdf"
