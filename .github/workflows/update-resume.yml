@@ -2,8 +2,6 @@ name: Update Resume
 
 on:
   push:
-    paths:
-      - "resume/Umar_Zaman_Resume.pdf"
     branches:
       - main
 
