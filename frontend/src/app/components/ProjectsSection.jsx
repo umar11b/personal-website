@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import { motion } from "framer-motion";
-import { ExternalLinkIcon, GithubIcon } from "lucide-react";
+import { ExternalLinkIcon, GithubIcon, PlayIcon, XIcon } from "lucide-react";
 
 const projectsData = [
   {
@@ -21,6 +22,7 @@ const projectsData = [
     deployment: "AWS Cloud",
     github: "https://github.com/umar11b/BlockchainCore",
     live: null,
+    video: "/videos/blockchaincore-demo.mp4", // Add video URL
     status: "in-progress",
   },
   {
@@ -84,7 +86,60 @@ const StatusBadge = ({ status }) => {
   );
 };
 
+const VideoModal = ({ isOpen, onClose, videoUrl }) => {
+  if (!isOpen) return null;
+
+  // Use React Portal to render outside the constrained container
+  return ReactDOM.createPortal(
+    <div
+      className="fixed inset-0 z-[9999] bg-black pointer-events-auto"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999,
+        backgroundColor: "black",
+        pointerEvents: "auto",
+      }}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-200 z-[10000] bg-black/50 rounded-full p-2 pointer-events-auto"
+        style={{ zIndex: 10000 }}
+      >
+        <XIcon className="w-6 h-6" />
+      </button>
+      <video
+        src={videoUrl}
+        controls
+        autoPlay
+        loop
+        muted
+        className="absolute inset-0 w-full h-full object-contain pointer-events-auto"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "contain",
+          pointerEvents: "auto",
+        }}
+      >
+        Your browser does not support the video tag.
+      </video>
+    </div>,
+    document.body
+  );
+};
+
 const ProjectCard = ({ project, index }) => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -153,6 +208,15 @@ const ProjectCard = ({ project, index }) => {
               Code
             </a>
           )}
+          {project.video && (
+            <button
+              onClick={() => setIsVideoModalOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 text-sm font-medium transform hover:scale-105"
+            >
+              <PlayIcon className="w-4 h-4" />
+              Video Demo
+            </button>
+          )}
           {project.live && (
             <a
               href={project.live}
@@ -164,9 +228,18 @@ const ProjectCard = ({ project, index }) => {
               Live Demo
             </a>
           )}
-          {!project.github && !project.live && <div className="h-10"></div>}
+          {!project.github && !project.live && !project.video && (
+            <div className="h-10"></div>
+          )}
         </div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoUrl={project.video}
+      />
     </motion.div>
   );
 };
