@@ -23,7 +23,7 @@ const projectsData = [
     github: "https://github.com/umar11b/BlockchainCore",
     live: null,
     video: "/videos/blockchaincore-demo.mp4", // Add video URL
-    status: "in-progress",
+    status: "completed",
   },
   {
     title: "Pi Homelab",
@@ -56,7 +56,15 @@ const projectsData = [
     title: "Portfolio Website",
     description:
       "Personal portfolio website showcasing cloud and DevOps expertise. Features modern React frontend with TypeAnimation, responsive design, and professional styling. Deployed with S3, CloudFront, Route 53, GitHub Actions CI/CD.",
-    tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+    tech: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "AWS S3",
+      "CloudFront",
+      "Route 53",
+      "GitHub Actions",
+    ],
     deployment: "umarzaman.ca",
     github: "https://github.com/umar11b/personal-website",
     live: "https://umarzaman.ca",
