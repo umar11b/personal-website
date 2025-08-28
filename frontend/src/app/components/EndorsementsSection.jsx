@@ -11,7 +11,7 @@ import Image from "next/image";
 const endorsementsData = [
   {
     name: "Anas Khan",
-    title: "Software Engineer",
+    title: "Founding Software Engineer",
     date: "2025",
     feedback:
       "Umar is a passionate aspiring Cloud Engineer, who wants to learn and apply his skills. He was great to have on the team and was very curious about different technologies. He took initiative to set up logging for our applications, which helped us gain important insights on how our services were running.",
@@ -29,84 +29,6 @@ const endorsementsData = [
     organization: "Learning Mode AI",
     image:
       "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/30487/avatar/large-2f3f74be7597e48e342ba2ed40b95454.jpeg",
-  },
-  {
-    name: "Ralph Maamari",
-    title: "Chief Executive Officer",
-    date: "2024",
-    feedback:
-      "Great professional experience working with Umar and Emad who were very professional throughout the entire process!",
-    tags: [
-      "Planning",
-      "Finance",
-      "Continuous integration",
-      "Personal finance",
-      "Continuous deployment",
-      "CI/CD",
-      "DevOps",
-      "Scalability",
-      "Software as a Service (SaaS)",
-      "Automation",
-    ],
-    project: "Infrastructure Systems DevOps CI/CD Role",
-    organization: "Savi Finance",
-    image:
-      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/5174/avatar/large-a1dd068adde9b2b334b9b2caa499d241.png",
-  },
-  {
-    name: "Imran Nathani",
-    title: "Operations Manager",
-    date: "2024",
-    feedback:
-      "Your strong teamwork and communication skills have contributed greatly to the overall success of our projects. Well done!",
-    tags: [
-      "Diabetes mellitus",
-      "Slack (software)",
-      "Google Sheets",
-      "Communication",
-      "Automatic updates",
-      "Data sharing",
-      "Mailchimp",
-      "Workflow management",
-    ],
-    project:
-      "Integration of Ticketspice, Mailchimp, Slack, and Google Sheets for I Challenge Diabetes",
-    organization: "I Challenge Diabetes",
-    image:
-      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/19045/avatar/large-75ab9a5c-b059-4e39-9d72-3fd7ebadd5b8.jpeg",
-  },
-  {
-    name: "James Rhule",
-    title: "Managing Partner",
-    date: "2024",
-    feedback: "Good work, thanks for the help!",
-    tags: [
-      "Notification systems",
-      "Service development",
-      "User profile",
-      "Management",
-    ],
-    project: "Backend Systems Lead",
-    organization: "Project: Human City",
-    image:
-      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/18949/avatar/large-4a5d8d90-fc94-4dd4-9ac3-7e932daf4eb9.png",
-  },
-  {
-    name: "Kurtis Cicalo",
-    title: "CEO",
-    date: "2024",
-    feedback: "Great to work with.",
-    tags: [
-      "Regression testing",
-      "Scenario testing",
-      "Language model",
-      "Integrity testing",
-      "Vulnerability",
-    ],
-    project: "LLM Integration Security and Content Integrity Testing",
-    organization: "Voiceflip Technologies Inc",
-    image:
-      "https://riipen-platform2-ca-central-1-production.s3.ca-central-1.amazonaws.com/uploads/company/17710/avatar/large-48c8695a-c051-49d0-aa85-f836b09cc497.jpeg",
   },
   {
     name: "Abi",
