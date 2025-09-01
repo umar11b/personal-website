@@ -2,7 +2,14 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { motion } from "framer-motion";
-import { ExternalLinkIcon, GithubIcon, PlayIcon, XIcon } from "lucide-react";
+import {
+  ExternalLinkIcon,
+  GithubIcon,
+  PlayIcon,
+  XIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "lucide-react";
 
 const projectsData = [
   {
@@ -253,6 +260,35 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const ProjectsSection = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollContainerRef = React.useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -400, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 400, behavior: "smooth" });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      setScrollPosition(scrollContainerRef.current.scrollLeft);
+    }
+  };
+
+  React.useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      return () => container.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
   return (
     <section id="projects" className="py-16">
       <motion.div
@@ -265,10 +301,41 @@ const ProjectsSection = () => {
         <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
           Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
-          ))}
+
+        {/* Horizontal Scroll Container */}
+        <div className="relative">
+          {/* Scrollable Projects */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-8 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {projectsData.map((project, index) => (
+              <div key={index} className="flex-shrink-0 w-80">
+                <ProjectCard project={project} index={index} />
+              </div>
+            ))}
+          </div>
+
+          {/* Scroll Progress Indicator */}
+          <div className="flex justify-center mt-8">
+            <div className="w-full max-w-md bg-gray-700 rounded-full h-2">
+              <motion.div
+                className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full"
+                style={{
+                  width: scrollContainerRef.current
+                    ? `${
+                        (scrollPosition /
+                          (scrollContainerRef.current.scrollWidth -
+                            scrollContainerRef.current.clientWidth)) *
+                        100
+                      }%`
+                    : "0%",
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>
