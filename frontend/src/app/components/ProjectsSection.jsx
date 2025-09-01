@@ -38,8 +38,9 @@ const projectsData = [
       "Designed and deployed a multi-tenant Kubernetes homelab on Raspberry Pi 5 with Docker, K3s, and ingress. Configured workload isolation, pod sharing, and role-based access controls to ensure secure multi-user environments. Added Prometheus + Grafana monitoring to track performance and optimize resource utilization.",
     tech: ["Kubernetes", "Docker", "K3s", "Ingress", "Grafana", "Prometheus"],
     deployment: "Local Network",
-    github: null,
+    github: "https://github.com/umar11b?tab=repositories",
     live: null,
+    video: "https://pi.umarzaman.ca",
     status: "in-progress",
   },
   {
@@ -223,15 +224,26 @@ const ProjectCard = ({ project, index }) => {
               Code
             </a>
           )}
-          {project.video && (
-            <button
-              onClick={() => setIsVideoModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 text-sm font-medium transform hover:scale-105"
-            >
-              <PlayIcon className="w-4 h-4" />
-              Video Demo
-            </button>
-          )}
+          {project.video &&
+            (project.video.startsWith("http") ? (
+              <a
+                href={project.video}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 text-sm font-medium transform hover:scale-105"
+              >
+                <PlayIcon className="w-4 h-4" />
+                Video Demo
+              </a>
+            ) : (
+              <button
+                onClick={() => setIsVideoModalOpen(true)}
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 text-sm font-medium transform hover:scale-105"
+              >
+                <PlayIcon className="w-4 h-4" />
+                Video Demo
+              </button>
+            ))}
           {project.live && (
             <a
               href={project.live}
