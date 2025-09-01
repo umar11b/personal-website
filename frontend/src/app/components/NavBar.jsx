@@ -14,6 +14,10 @@ const navLinks = [
     href: "#skills",
   },
   {
+    title: "Workshops",
+    href: "#workshops",
+  },
+  {
     title: "Projects",
     href: "#projects",
   },
