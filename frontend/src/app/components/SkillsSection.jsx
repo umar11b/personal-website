@@ -29,7 +29,7 @@ const skillsData = {
       },
       {
         name: "Terraform (IaC)",
-        status: "planned",
+        tag: "project",
       },
       {
         name: "Linux server administration (Debian, Ubuntu)",
