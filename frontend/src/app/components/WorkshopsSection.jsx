@@ -11,28 +11,43 @@ const workshopsData = [
     date: "2025",
     duration: "1 day",
     github: "https://github.com/umar11b/EcoAgents-Bedrock",
-    status: "completed",
+    event: "AWS User Group Toronto",
   },
+  // Example workshop for AWS Summit 2025 Toronto (uncomment when ready)
+  // {
+  //   title: "Advanced Serverless Architecture Workshop",
+  //   description:
+  //     "Deep dive into building scalable serverless applications using AWS Lambda, API Gateway, and DynamoDB. Learn best practices for event-driven architecture and cost optimization.",
+  //   date: "2025",
+  //   duration: "2 days",
+  //   github: null,
+  //   event: "AWS Summit 2025 Toronto",
+  // },
 ];
 
-const StatusBadge = ({ status }) => {
-  if (status === "completed") {
+const EventBadge = ({ event }) => {
+  // AWS User Group Toronto styling
+  if (event === "AWS User Group Toronto") {
     return (
-      <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow shadow-amber-400/20 border border-amber-300">
-        Completed
+      <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/25 border border-orange-400/30 hover:shadow-orange-500/40 transition-all duration-300">
+        🏙️ AWS User Group Toronto
       </span>
     );
   }
-  if (status === "in-progress") {
+
+  // AWS Summit 2025 Toronto styling
+  if (event === "AWS Summit 2025 Toronto") {
     return (
-      <span className="px-2 py-1 text-xs rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white">
-        In Progress
+      <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25 border border-blue-400/30 hover:shadow-blue-500/40 transition-all duration-300">
+        🎯 AWS Summit 2025 Toronto
       </span>
     );
   }
+
+  // Default styling for other events
   return (
-    <span className="px-2 py-1 text-xs rounded-full border border-purple-500 text-purple-400">
-      Planned
+    <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25 border border-purple-400/30 hover:shadow-purple-500/40 transition-all duration-300">
+      📅 {event}
     </span>
   );
 };
@@ -65,7 +80,7 @@ const WorkshopCard = ({ workshop, index }) => {
         <h3 className="text-xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
           {workshop.title}
         </h3>
-        <StatusBadge status={workshop.status} />
+        <EventBadge event={workshop.event} />
       </div>
 
       <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
