@@ -29,8 +29,8 @@ const EventBadge = ({ event }) => {
   // AWS User Group Toronto styling
   if (event === "AWS User Group Toronto") {
     return (
-      <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/25 border border-orange-400/30 hover:shadow-orange-500/40 transition-all duration-300">
-        🏙️ AWS User Group Toronto
+      <span className="inline-block px-2 py-1 text-xs font-medium text-orange-300 bg-orange-500/15 rounded border-l-2 border-orange-400 hover:bg-orange-500/20 hover:shadow-sm hover:shadow-orange-500/20 transition-all duration-200">
+        AWS User Group
       </span>
     );
   }
@@ -38,16 +38,16 @@ const EventBadge = ({ event }) => {
   // AWS Summit 2025 Toronto styling
   if (event === "AWS Summit 2025 Toronto") {
     return (
-      <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25 border border-blue-400/30 hover:shadow-blue-500/40 transition-all duration-300">
-        🎯 AWS Summit 2025 Toronto
+      <span className="inline-block px-2 py-1 text-xs font-medium text-blue-300 bg-blue-500/15 rounded border-l-2 border-blue-400 hover:bg-blue-500/20 hover:shadow-sm hover:shadow-blue-500/20 transition-all duration-200">
+        AWS Summit 2025
       </span>
     );
   }
 
   // Default styling for other events
   return (
-    <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25 border border-purple-400/30 hover:shadow-purple-500/40 transition-all duration-300">
-      📅 {event}
+    <span className="inline-block px-2 py-1 text-xs font-medium text-purple-300 bg-purple-500/15 rounded border-l-2 border-purple-400 hover:bg-purple-500/20 hover:shadow-sm hover:shadow-purple-500/20 transition-all duration-200">
+      {event}
     </span>
   );
 };
