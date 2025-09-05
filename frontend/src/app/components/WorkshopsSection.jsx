@@ -31,6 +31,25 @@ const workshopsData = [
     github: null,
     event: "AWS Summit 2025 Toronto",
   },
+  {
+    title:
+      "Building and Deploying a Containerized Application with Amazon Elastic Kubernetes Service",
+    description:
+      "Self-paced lab covering the complete process of building, containerizing, and deploying applications using Amazon EKS. Learned container orchestration, service mesh implementation, and best practices for managing containerized workloads at scale in production environments.",
+    date: "September 4, 2025",
+    presenters: "Self-Paced Lab",
+    github: null,
+    event: "AWS Summit 2025 Toronto",
+  },
+  {
+    title: "Automate Infrastructure Compliance with AWS Config",
+    description:
+      "Self-paced lab focused on implementing automated compliance monitoring and remediation using AWS Config. Explored configuration rules, compliance dashboards, and automated remediation workflows to ensure infrastructure adheres to organizational policies and regulatory requirements.",
+    date: "September 4, 2025",
+    presenters: "Self-Paced Lab",
+    github: null,
+    event: "AWS Summit 2025 Toronto",
+  },
 ];
 
 const WorkshopCard = ({ workshop, index }) => {
@@ -128,6 +147,22 @@ const WorkshopCard = ({ workshop, index }) => {
             </div>
           </div>
         )}
+
+        {/* AWS Skill Builder Badge - Reserved for future Microsoft events */}
+        {/* {workshop.event === "AWS Skill Builder" && (
+          <div className="mt-8 pt-4 border-t border-gray-700/50">
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold rounded-full shadow-lg shadow-green-500/30 border border-green-400/30 hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-105">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  AWS Skill Builder
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                </span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+              </div>
+            </div>
+          </div>
+        )} */}
       </div>
     </motion.div>
   );
