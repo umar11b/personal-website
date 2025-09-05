@@ -18,16 +18,16 @@ const workshopsData = [
     description:
       "Comprehensive workshop on building secure Amazon Elastic Kubernetes Service (EKS) frameworks specifically designed for financial services. Covered security best practices, compliance requirements, and implementation strategies for containerized applications in regulated environments.",
     date: "September 4, 2025",
-    presenters: "Raj Bagwe & Preetam Rebello, AWS",
+    presenters: "Raj Bagwe, AWS\nPreetam Rebello, AWS",
     github: null,
     event: "AWS Summit 2025 Toronto",
   },
   {
-    title: "VMW202: An AWS Guide for VMware Administrators",
+    title: "An AWS Guide for VMware Administrators",
     description:
       "Interactive chalk talk designed for VMware administrators embarking on their AWS migration journey. Explored Amazon Elastic VMware Service (Amazon EVS) and AWS Transform for VMware, covering technical capabilities, use cases, and integration into overall migration strategies. Bridged knowledge between familiar VMware environments and AWS cloud services.",
     date: "September 4, 2025",
-    presenters: "David Piet & Simon Vaillancourt, AWS",
+    presenters: "David Piet, AWS\nSimon Vaillancourt, AWS",
     github: null,
     event: "AWS Summit 2025 Toronto",
   },
@@ -99,13 +99,13 @@ const WorkshopCard = ({ workshop, index }) => {
         <div className="flex justify-between items-center">
           <div>
             <p className="text-gray-400 text-xs mb-1">Presenters:</p>
-            <p className="text-purple-400 text-sm font-medium">
+            <p className="text-purple-400 text-xs font-medium whitespace-pre-line">
               {workshop.presenters}
             </p>
           </div>
           <div>
             <p className="text-gray-400 text-xs mb-1">Date:</p>
-            <p className="text-purple-400 text-sm font-medium">
+            <p className="text-purple-400 text-xs font-medium">
               {workshop.date}
             </p>
           </div>
