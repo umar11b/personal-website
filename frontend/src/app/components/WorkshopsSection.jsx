@@ -92,7 +92,7 @@ const WorkshopCard = ({ workshop, index }) => {
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-400 hover:from-purple-500/30 hover:to-pink-500/30 hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 text-sm font-medium transform hover:scale-105"
             >
               <GithubIcon className="w-4 h-4" />
-              Workshop Materials
+              Code
             </a>
           )}
           {!workshop.github && <div className="h-10"></div>}
