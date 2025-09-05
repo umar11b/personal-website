@@ -33,33 +33,6 @@ const workshopsData = [
   },
 ];
 
-const EventBadge = ({ event }) => {
-  // AWS User Group Toronto styling
-  if (event === "AWS User Group Toronto") {
-    return (
-      <span className="inline-block px-2 py-1 text-xs font-medium text-orange-300 bg-orange-500/15 rounded border-l-2 border-orange-400 hover:bg-orange-500/20 hover:shadow-sm hover:shadow-orange-500/20 transition-all duration-200">
-        AWS User Group
-      </span>
-    );
-  }
-
-  // AWS Summit 2025 Toronto styling
-  if (event === "AWS Summit 2025 Toronto") {
-    return (
-      <span className="inline-block px-2 py-1 text-xs font-medium text-blue-300 bg-blue-500/15 rounded border-l-2 border-blue-400 hover:bg-blue-500/20 hover:shadow-sm hover:shadow-blue-500/20 transition-all duration-200">
-        AWS Summit 2025
-      </span>
-    );
-  }
-
-  // Default styling for other events
-  return (
-    <span className="inline-block px-2 py-1 text-xs font-medium text-purple-300 bg-purple-500/15 rounded border-l-2 border-purple-400 hover:bg-purple-500/20 hover:shadow-sm hover:shadow-purple-500/20 transition-all duration-200">
-      {event}
-    </span>
-  );
-};
-
 const WorkshopCard = ({ workshop, index }) => {
   return (
     <motion.div
@@ -84,11 +57,10 @@ const WorkshopCard = ({ workshop, index }) => {
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
 
-      <div className="relative flex items-start justify-between mb-4">
+      <div className="relative mb-4">
         <h3 className="text-xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
           {workshop.title}
         </h3>
-        <EventBadge event={workshop.event} />
       </div>
 
       <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
@@ -125,6 +97,37 @@ const WorkshopCard = ({ workshop, index }) => {
           )}
           {!workshop.github && <div className="h-10"></div>}
         </div>
+
+        {/* Event Badge at bottom */}
+        {workshop.event === "AWS Summit 2025 Toronto" && (
+          <div className="mt-8 pt-4 border-t border-gray-700/50">
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold rounded-full shadow-lg shadow-blue-500/30 border border-blue-400/30 hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  AWS Summit 2025
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                </span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {workshop.event === "AWS User Group Toronto" && (
+          <div className="mt-8 pt-4 border-t border-gray-700/50">
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold rounded-full shadow-lg shadow-orange-500/30 border border-orange-400/30 hover:shadow-orange-500/50 transition-all duration-300 transform hover:scale-105">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  AWS User Group Toronto
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                </span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );
