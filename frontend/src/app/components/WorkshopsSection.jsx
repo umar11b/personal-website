@@ -7,22 +7,30 @@ const workshopsData = [
   {
     title: "Amazon Bedrock AgentCore Workshop",
     description:
-      "Learning case study following AWS HQ workshop demonstration on Bedrock AgentCore (AWS User Group Toronto - August 21, 2025) demonstration done by Jane Shen. Implemented dual-agent approach with Bedrock integration and fallback mechanisms, focusing on environmental tools like air quality, trip emissions, and wildfire alerts.",
-    date: "2025",
-    duration: "1 day",
+      "Learning case study following AWS HQ workshop demonstration on Bedrock AgentCore. Implemented dual-agent approach with Bedrock integration and fallback mechanisms, focusing on environmental tools like air quality, trip emissions, and wildfire alerts.",
+    date: "August 21, 2025",
+    presenters: "Jane Shen, AWS",
     github: "https://github.com/umar11b/EcoAgents-Bedrock",
     event: "AWS User Group Toronto",
   },
-  // Example workshop for AWS Summit 2025 Toronto (uncomment when ready)
-  // {
-  //   title: "Advanced Serverless Architecture Workshop",
-  //   description:
-  //     "Deep dive into building scalable serverless applications using AWS Lambda, API Gateway, and DynamoDB. Learn best practices for event-driven architecture and cost optimization.",
-  //   date: "2025",
-  //   duration: "2 days",
-  //   github: null,
-  //   event: "AWS Summit 2025 Toronto",
-  // },
+  {
+    title: "Building a Secure EKS Framework for Financial Services",
+    description:
+      "Comprehensive workshop on building secure Amazon Elastic Kubernetes Service (EKS) frameworks specifically designed for financial services. Covered security best practices, compliance requirements, and implementation strategies for containerized applications in regulated environments.",
+    date: "September 4, 2025",
+    presenters: "Raj Bagwe & Preetam Rebello, AWS",
+    github: null,
+    event: "AWS Summit 2025 Toronto",
+  },
+  {
+    title: "VMW202: An AWS Guide for VMware Administrators",
+    description:
+      "Interactive chalk talk designed for VMware administrators embarking on their AWS migration journey. Explored Amazon Elastic VMware Service (Amazon EVS) and AWS Transform for VMware, covering technical capabilities, use cases, and integration into overall migration strategies. Bridged knowledge between familiar VMware environments and AWS cloud services.",
+    date: "September 4, 2025",
+    presenters: "David Piet & Simon Vaillancourt, AWS",
+    github: null,
+    event: "AWS Summit 2025 Toronto",
+  },
 ];
 
 const EventBadge = ({ event }) => {
@@ -90,15 +98,15 @@ const WorkshopCard = ({ workshop, index }) => {
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-gray-400 text-xs mb-1">Date:</p>
+            <p className="text-gray-400 text-xs mb-1">Presenters:</p>
             <p className="text-purple-400 text-sm font-medium">
-              {workshop.date}
+              {workshop.presenters}
             </p>
           </div>
           <div>
-            <p className="text-gray-400 text-xs mb-1">Duration:</p>
+            <p className="text-gray-400 text-xs mb-1">Date:</p>
             <p className="text-purple-400 text-sm font-medium">
-              {workshop.duration}
+              {workshop.date}
             </p>
           </div>
         </div>
