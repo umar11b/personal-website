@@ -41,15 +41,15 @@ const workshopsData = [
     github: null,
     event: "AWS Summit 2025 Toronto",
   },
-  {
-    title: "Automate Infrastructure Compliance with AWS Config",
-    description:
-      "Self-paced lab focused on implementing automated compliance monitoring and remediation using AWS Config. Explored configuration rules, compliance dashboards, and automated remediation workflows to ensure infrastructure adheres to organizational policies and regulatory requirements.",
-    date: "September 4, 2025",
-    presenters: "Self-Paced Lab",
-    github: null,
-    event: "AWS Summit 2025 Toronto",
-  },
+  // {
+  //   title: "Automate Infrastructure Compliance with AWS Config",
+  //   description:
+  //     "Self-paced lab focused on implementing automated compliance monitoring and remediation using AWS Config. Explored configuration rules, compliance dashboards, and automated remediation workflows to ensure infrastructure adheres to organizational policies and regulatory requirements.",
+  //   date: "September 4, 2025",
+  //   presenters: "Self-Paced Lab",
+  //   github: null,
+  //   event: "AWS Summit 2025 Toronto",
+  // },
 ];
 
 const WorkshopCard = ({ workshop, index }) => {
