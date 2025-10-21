@@ -39,7 +39,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::931633655568:role/GitHubPortfolioDeploy
-          aws-region: us-east-1 # Replace with your bucket's region
+          aws-region: us-east-1
           role-session-name: GitHubActions
 
       - name: Deploy to S3
