@@ -92,7 +92,7 @@ const skillsData = {
     title: "🎓 Certifications",
     items: [
       {
-        name: "AWS Cloud Practitioner",
+        name: "AWS Certified Cloud Practitioner",
         status: "completed",
       },
       {
@@ -100,12 +100,8 @@ const skillsData = {
         status: "in-progress",
       },
       {
-        name: "HashiCorp Terraform Associate",
+        name: "AWS Certified Machine Learning Engineer – Associate",
         status: "in-progress",
-      },
-      {
-        name: "Certified Kubernetes Administrator (CKA)",
-        status: "planned",
       },
     ],
   },
