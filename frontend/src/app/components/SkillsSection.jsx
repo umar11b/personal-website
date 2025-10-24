@@ -24,11 +24,11 @@ const skillsData = {
         tag: "project",
       },
       {
-        name: "Kubernetes",
+        name: "Kubernetes (K3s, Helm)",
         tag: "home-lab",
       },
       {
-        name: "Terraform (IaC)",
+        name: "Terraform (IaC, YAML)",
         tag: "project",
       },
       {
@@ -49,12 +49,12 @@ const skillsData = {
         tag: "academic",
       },
       {
-        name: "JavaScript/TypeScript (IaC/CDK)",
+        name: "Go",
         tag: "project",
       },
       {
-        name: "SQL",
-        tag: "academic",
+        name: "JavaScript/TypeScript (IaC/CDK)",
+        tag: "project",
       },
     ],
   },
@@ -79,7 +79,15 @@ const skillsData = {
     title: "🛠️ Tools & Frameworks",
     items: [
       {
-        name: "GitHub Actions (CI/CD)",
+        name: "CI/CD Pipelines (GitHub Actions)",
+        tag: "project",
+      },
+      {
+        name: "Git",
+        tag: "project",
+      },
+      {
+        name: "VS Code",
         tag: "project",
       },
       {
