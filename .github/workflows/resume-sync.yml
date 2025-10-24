@@ -52,9 +52,18 @@ jobs:
 
       - name: Invalidate CloudFront cache
         run: |
-          echo "🔄 Invalidating CloudFront cache for main distribution..."
-          aws cloudfront create-invalidation --distribution-id E18H3I0OQ0DRO8 --paths "/Umar_Zaman_Cloud_Engineer.pdf" "/Umar_Zaman_Resume.pdf"
-          echo "✅ CloudFront cache invalidated for resume files"
+          echo "🔄 Finding and invalidating CloudFront cache for resume subdomain..."
+          # Find the distribution that serves resume.umarzaman.ca
+          DISTRIBUTION_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[?contains(Aliases.Items, 'resume.umarzaman.ca')].Id" --output text)
+          if [ ! -z "$DISTRIBUTION_ID" ]; then
+            echo "📡 Found resume CloudFront distribution: $DISTRIBUTION_ID"
+            aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/Umar_Zaman_Cloud_Engineer.pdf"
+            echo "✅ CloudFront cache invalidated for resume files"
+          else
+            echo "⚠️  No CloudFront distribution found for resume.umarzaman.ca"
+            echo "🔄 Trying main distribution as fallback..."
+            aws cloudfront create-invalidation --distribution-id E2B5BLXMFD9L4 --paths "/Umar_Zaman_Cloud_Engineer.pdf" || echo "⚠️  Main distribution also not found"
+          fi
 
       - name: Get resume URL
         run: |
