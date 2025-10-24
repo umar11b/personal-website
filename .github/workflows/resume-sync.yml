@@ -27,18 +27,19 @@ jobs:
           aws-region: us-east-1
           role-session-name: ResumeSync
 
-      - name: Clear S3 bucket contents
+      - name: Clear old resume files from main bucket
         run: |
-          echo "🧹 Clearing existing files from resume-umarzaman-ca bucket..."
-          aws s3 rm s3://resume-umarzaman-ca/ --recursive || echo "⚠️  Bucket was already empty or doesn't exist"
+          echo "🧹 Clearing old resume files from umarzaman.ca bucket..."
+          aws s3 rm s3://umarzaman.ca/Umar_Zaman_Resume.pdf || echo "⚠️  Old resume file not found"
+          aws s3 rm s3://umarzaman.ca/Umar_Zaman_Cloud_Engineer.pdf || echo "⚠️  Old resume file not found"
 
-      - name: Sync resume to S3
+      - name: Sync resume to main S3 bucket
         run: |
           # Check if resume file exists
           if [ -f "resume-sync/Umar_Zaman_Cloud_Engineer.pdf" ]; then
-            echo "📄 Found resume file, syncing to S3..."
-            aws s3 cp resume-sync/Umar_Zaman_Cloud_Engineer.pdf s3://resume-umarzaman-ca/ --cache-control max-age=31536000,public
-            echo "✅ Resume synced successfully to resume-umarzaman-ca bucket"
+            echo "📄 Found resume file, syncing to main S3 bucket..."
+            aws s3 cp resume-sync/Umar_Zaman_Cloud_Engineer.pdf s3://umarzaman.ca/ --cache-control max-age=31536000,public
+            echo "✅ Resume synced successfully to umarzaman.ca bucket"
           else
             echo "❌ No resume file found in resume-sync/ directory"
             exit 1
@@ -46,9 +47,16 @@ jobs:
 
       - name: List S3 bucket contents
         run: |
-          echo "📋 Current contents of resume-umarzaman-ca bucket:"
-          aws s3 ls s3://resume-umarzaman-ca/ --recursive
+          echo "📋 Current contents of umarzaman.ca bucket (resume files):"
+          aws s3 ls s3://umarzaman.ca/ | grep -E "(Umar_Zaman|resume)" || echo "No resume files found"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          echo "🔄 Invalidating CloudFront cache for main distribution..."
+          aws cloudfront create-invalidation --distribution-id E18H3I0OQ0DRO8 --paths "/Umar_Zaman_Cloud_Engineer.pdf" "/Umar_Zaman_Resume.pdf"
+          echo "✅ CloudFront cache invalidated for resume files"
 
       - name: Get resume URL
         run: |
-          echo "🔗 Resume URL: https://resume-umarzaman-ca.s3.amazonaws.com/Umar_Zaman_Cloud_Engineer.pdf"
+          echo "🔗 Direct S3 URL: https://umarzaman.ca.s3.amazonaws.com/Umar_Zaman_Cloud_Engineer.pdf"
+          echo "🌐 Custom domain: https://resume.umarzaman.ca/Umar_Zaman_Cloud_Engineer.pdf"
