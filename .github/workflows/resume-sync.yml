@@ -37,7 +37,7 @@ jobs:
           # Check if resume file exists
           if [ -f "resume-sync/Umar_Zaman_Cloud_Engineer.pdf" ]; then
             echo "📄 Found resume file, syncing to S3..."
-            aws s3 cp resume-sync/Umar_Zaman_Cloud_Engineer.pdf s3://resume-umarzaman-ca/ --cache-control max-age=31536000,public --acl public-read
+            aws s3 cp resume-sync/Umar_Zaman_Cloud_Engineer.pdf s3://resume-umarzaman-ca/ --cache-control max-age=31536000,public
             echo "✅ Resume synced successfully to resume-umarzaman-ca bucket"
           else
             echo "❌ No resume file found in resume-sync/ directory"
