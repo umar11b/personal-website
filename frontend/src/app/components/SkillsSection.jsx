@@ -28,7 +28,7 @@ const skillsData = {
         tag: "home-lab",
       },
       {
-        name: "Terraform (IaC, YAML)",
+        name: "Infrastructure-as-Code (Terraform, CDK, YAML)",
         tag: "project",
       },
       {
@@ -53,7 +53,7 @@ const skillsData = {
         tag: "project",
       },
       {
-        name: "JavaScript/TypeScript (IaC/CDK)",
+        name: "JavaScript/TypeScript",
         tag: "project",
       },
     ],
