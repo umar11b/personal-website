@@ -44,23 +44,6 @@ const projectsData = [
     status: "in-progress",
   },
   {
-    title: "Greenalytics",
-    description:
-      "React + Node.js dashboard for environmental metrics; automated deploy pipeline; AWS hosting. Real-time cloud-native environmental dashboard for tracking Canadian industrial waste, electricity usage, and carbon emissions. Deployed with S3, CloudFront, Route 53, GitHub Actions CI/CD.",
-    tech: [
-      "React",
-      "Node.js",
-      "AWS S3",
-      "CloudFront",
-      "GitHub Actions",
-      "Terraform",
-    ],
-    deployment: "greenalytics.umarzaman.ca",
-    github: "https://github.com/umar11b/Greenalytics",
-    live: "https://greenalytics.umarzaman.ca",
-    status: "in-progress",
-  },
-  {
     title: "Portfolio Website",
     description:
       "Personal portfolio website showcasing cloud and DevOps expertise. Features modern React frontend with TypeAnimation, responsive design, and professional styling. Deployed with S3, CloudFront, Route 53, GitHub Actions CI/CD.",
